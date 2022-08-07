@@ -5,6 +5,7 @@ import requests
 from requests.packages import urllib3
 import os
 import time
+import random
 
 ###########用户需要更改的部分###############
 your_name = os.environ['STUDENTID']
@@ -51,6 +52,7 @@ def fillForm(res):
 
 # def main_handler(event, context):
 # if __name__ == '__main__':
+time.sleep(random.randInt(1,30))
 result = fillForm(buaaLogin(your_name, your_pwd))
 wechat_post(result.text)
 	# return("DONE")
