@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '${{random.int[0,59]}} ${{random.int[0,8]}} * * *'
+    - cron: 0 ${random.int[0,8]} * * *
   workflow_dispatch:
 
 jobs:
