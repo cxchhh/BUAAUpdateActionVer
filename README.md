@@ -6,25 +6,24 @@ the main python script is forked from https://github.com/windiboy/BUAAAutoUpdate
 
 # How to use?
 ## Step 1
-- Fork this repository. (Of course you should log in first!!!)
+- Fork this repository to your own github account. (Of course you should log in first!!!)
+- 第一次设置时请确保当天还未打卡
 ## Step 2
-- You should get FORM_DATA first at this step.
-- **The tutorial refers to [BUAAAutoUpdate](https://github.com/windiboy/BUAAAutoUpdate).**
 - 使用电脑端chrome浏览器，打开并登录[北航师生报平安系统](https://app.buaa.edu.cn/site/buaaStudentNcov/index)
 - 如果无法获取定位，可以参考[Chrome 自定位置](https://blog.csdn.net/u010844189/article/details/81163438)。
-- 按F12打开控制台，切换到网络栏（network）。在页面中填好全部信息之后，点击提交，然后查看`network`标签中的`save`项。点击后查看`Headers`标签，点击`Form Data`右侧的`view source`，复制备用。
+- 按F12打开控制台(或右键->检查)，切换到网络栏（network）。在页面中填好全部信息之后，点击提交，然后不要退出页面，查看`network(网络)`，选择`全部`标签，点击下面`名称`中的`save`项。点击后查看右侧`Payload(载荷)`标签，点击`Form Data(表单数据)`右侧的`view source(查看源代码)`，全选复制备用（一天只有这一次机会，一定确保复制到粘贴板，强烈推荐复制后提前保存到某个文本文档）。
 ## Step 3
-- Add four action secrets in Settings->Security->Secrets->Actions->New repository secret as follow:
+- Look above, click `Settings`->`Security`->`Secrets`->`Actions`->`New repository secret`, and add 4 action secrets as follow:
 ![BUAAAutoUpdateSecret.jpg](https://s2.loli.net/2022/07/05/pRWwYiA4Ovx2hBZ.jpg)
 - The four names are: STUDENTID, PASSWORD, SERVER_SEC, FORM_DATA
 - STUDENTID is your BUAA SSO Account ID, namely your student id.
 - PASSWORD is the password of your BUAA SSO Account.
-- SERVER_SEC is your Wechat_Key provided by [ServerChan](https://sct.ftqq.com/). If you don't have the key, you can just fill in any legal string as its value.
-- FORM_DATA is got from Step 2.
+- SERVER_SEC is your Wechat_Key provided by [ServerChan](https://sct.ftqq.com/). If you don't have the key, please get one in ServerChan WeChat official account.
+- FORM_DATA is got and saved from Step 2.
 ## Step 4
-- Open Action in your forked repository, and you should enable the workflow named *BUAAAutoUpdate Action Ver*.
-- The default configuration is scheduled to run the workflow at 16:26 (UTC +8:00) every day, and you can also run it manually as follow image in the Action page.
+- Click `Action` above, and you are supposed to see the workflow named *BUAAAutoUpdate Action Ver*.
+- This Action should be run manually for the first time, then it will run AUTOMATICALLY at the scheduled time EVERYDAY! Hurray!
 ![BUAAAutoUpdateAction.jpg](https://s2.loli.net/2022/07/06/upgEq81INAf7YyK.jpg)
-- If you want to change the scheduled time, you can edit file ./.github/workflows/main.yml at line 12.
-- If you don't know how to use cron, you can refer to [this page](https://docs.github.com/cn/actions/using-workflows/events-that-trigger-workflows#schedule).
-
+- If you want to change the scheduled time, you can edit file ./.github/workflows/main.yml at line 12, it uses cron expression to set the schedule.
+- If you don't know how to use cron expression, you can refer to [this page](https://help.aliyun.com/document_detail/64769.html).
+- You can also use ${random.int} to replace a value with random integer in yml configuration file, in case that you want a stochastic updating time. :)
