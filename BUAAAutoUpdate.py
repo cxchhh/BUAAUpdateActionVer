@@ -52,7 +52,7 @@ def fillForm(res):
 
 # def main_handler(event, context):
 # if __name__ == '__main__':
-time.sleep(random.randInt(1,300))
+time.sleep(random.randint(1,300))
 result = fillForm(buaaLogin(your_name, your_pwd))
 wechat_post(result.text)
 	# return("DONE")
