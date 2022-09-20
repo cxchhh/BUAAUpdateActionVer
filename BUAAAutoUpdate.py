@@ -6,12 +6,13 @@ from requests.packages import urllib3
 import os
 import time
 import random
-
+from datetime import datetime
 ###########用户需要更改的部分###############
 your_name = os.environ['STUDENTID']
 your_pwd = os.environ['PASSWORD']
 wechat_key = os.environ['SERVER_SEC']
 form_data = os.environ['FORM_DATA']
+form_data_ins = os.environ['FORM_DATA_INS']
 
 ###########用户需要更改的部分###############
 urllib3.disable_warnings()
@@ -20,6 +21,12 @@ def wechat_post(text):
 	url = 'https://sctapi.ftqq.com/' + wechat_key + '.send?title=BUAA-Auto-Update&desp=' + text + time.strftime("%m-%d", time.localtime())
 	requests.get(url)
 
+def isWeekend():
+	timeNow=datetime.now()
+	today=datetime.date(timeNow).weekday()
+	if today >= 5 and today <= 7:
+		return True
+	return False
 
 def buaaLogin(user_name, password):
 	print("统一认证登录")
@@ -46,7 +53,7 @@ def fillForm(res):
 		'Content-Type': 'application/x-www-form-urlencoded',
 		'Cookie': res.headers['set-cookie']
 	}
-	r = s.post('https://app.buaa.edu.cn/buaaxsncov/wap/default/save', data=form_data, headers=headers, verify=False)
+	r = s.post('https://app.buaa.edu.cn/buaaxsncov/wap/default/save', data=(form_data if isWeekend() else form_data_ins), headers=headers, verify=False)
 	return r
 
 
