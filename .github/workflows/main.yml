@@ -35,3 +35,4 @@ jobs:
         STUDENTID: ${{ secrets.STUDENTID }}
         PASSWORD: ${{ secrets.PASSWORD }}
         SERVER_SEC: ${{ secrets.SERVER_SEC }}
+        FORM_DATA_INS: ${{secrets.FORM_DATA_INS}}
