@@ -24,7 +24,7 @@ def wechat_post(text):
 def isWeekend():
 	timeNow=datetime.now()
 	today=datetime.date(timeNow).weekday()
-	if today >= 4 and today < 7:
+	if today >= 0 and today < 7:
 		return True
 	return False
 
