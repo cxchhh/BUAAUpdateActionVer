@@ -26,4 +26,4 @@ the main python script is forked from https://github.com/windiboy/BUAAAutoUpdate
 ![BUAAAutoUpdateAction.jpg](https://s2.loli.net/2022/07/06/upgEq81INAf7YyK.jpg)
 - If you want to change the scheduled time, you can edit file ./.github/workflows/main.yml at line 12, it uses cron expression to set the schedule.
 - If you don't know how to use cron expression, you can refer to [this page](https://help.aliyun.com/document_detail/64769.html).
-- You can also make the schedule to be more stochastic by modifying the BUAAAutoUpdate.py Line 55 (**the default is 5 min range**).
+- You can also make the schedule to be more stochastic by modifying the BUAAAutoUpdate.py Line 55 (**default: range 0 to 5 minutes**).
