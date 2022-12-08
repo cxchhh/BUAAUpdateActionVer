@@ -1,3 +1,4 @@
+# 此工作流已弃用 -2022.12.8
 # BUAAUpdateActionVer
 the main python script is forked from https://github.com/windiboy/BUAAAutoUpdate
 
